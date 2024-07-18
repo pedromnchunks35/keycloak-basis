@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-postgresql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: keycloak-postgresql
+  template:
+    metadata:
+      labels:
+        deployment: keycloak-postgresql
+        service: keycloak-postgresql
+    spec:
+      containers:
+        - name: postgres-container
+          image: postgres:latest
+          volumeMounts:
+            - name: postgres-volume
+              mountPath: "/var/lib/postgresql/data"
+          env:
+            - name: POSTGRES_USER
+              value: "admin"
+            - name: POSTGRES_PASSWORD
+              value: "12341234"
+            - name: POSTGRES_DB
+              value: "keycloak"
+      volumes:
+        - name: postgres-volume
+          hostPath:
+            path: /mnt/c/Users/psousaesilva/Documents/keycloak/keycloakPractical/postgresql-datastore

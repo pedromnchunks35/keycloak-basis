@@ -1,0 +1,76 @@
+# Info
+- Keycloak is a tool for creating security out of the box
+- We can integrate it with LDAP and Active Directory Servers
+- We can delegate the authentication to third party providers like Facebook and Google
+# Basic Keycloak operations
+- Keycloak is a separate server that we manage in our network
+- Apps are confired to point to this server for authentication
+# Core concepts and terms
+- Users
+  - Entities that are able to log into the system
+  - They can have a lot of attributes such as email,username,address,phone number and birthday
+  - We can assign to them group memberships and have specific roles assigned to them
+- Authentication
+  - Process of identifying and validating a user
+- Authorization
+  - The process of granting access to a user
+- Credentials
+  - Pieces of data that keycloak uses to verify the identity of a user (passwords,digital certificates or fingerprints)
+- Roles 
+  - Type of user
+- User role mapping
+  - We mape a mapping between a user and a role so that we can use its role into tokens so that apps can decide access permissions on various resources they manage
+- Composite roles
+  - Roles that are associated with another roles
+  - If a user gains the role of a role that is upper in the hierarchical association of roles then he ihnerits the permissions of those roles 
+- Groups
+  - We also have groups that are composites of users that we can associate attributes
+  - We can also associate this groups to roles the same way we can associate users
+- Realms
+  - A real manages a set of users,credentials,roles and groups
+  - A user belongs to and logs into a realm
+  - Realms are isolated from each other
+- Clients
+  - Entities that can request keycloak to authenticate a user
+  - Most often apps and services
+  - Also this clients are the ones that request tokens to access other apps services
+- Client adapters
+  - Plugins that we install in our app to communicate with keycloak
+- Consent
+  - A user granting access of its information by the client
+- Client scopes
+  - Client scopes are default mapping and roles for a given user to make it easier to register new users
+- Client role
+  - Clients can define roles that are specific to them
+- Identity token
+  - A token that provides info about the user
+- Acess token
+  - A token that grants access to something
+- Assertion
+  - Info about a user
+- Service account
+  - A account that each client has to obtain an access token
+- Direct grant
+  - Way of a client obtain a access token on behalf of a user via REST invocation
+- Protocol mappers
+  - For each client we can tailor what claims and assertions are stores in the OIDC token or SAML assertion
+  - You do this per client
+- Session
+  - When a user logins a session gets created
+  - Both users and admins can view session information
+- User Federation Provider
+  - We can use LDAP or Active directory that store user and credential information
+- Identity Provider
+  - Keycloak is a IDP (identity provider)
+- Identity Provider Federation
+  - Keycloak can be configured to delegate the authentication to one or more IDPs
+- Identity provider mappers
+  - You can map incoming tokens and assertions to user and session attributes
+- Required Actions
+  - Something that a user is obligated to do during the authentication process
+- Authentication Flows
+  - What a user must do to get authenticated
+- Events
+  - We can view logs as a admin
+- Themes
+  - Keycloak has teams that we can override
